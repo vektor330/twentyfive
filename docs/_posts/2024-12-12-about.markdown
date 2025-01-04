@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "About"
+date:   2024-12-12
+categories: meta intro
+---
+
+Welcome to this blog! It started out in December 2024 as a way to write technically about a pet project to sharpen some of my skills.
+
+# About me
+
+[This is me](https://www.linkedin.com/in/vektor/), I’ve been doing software development professionally for almost 2 decades now, and as a hobby since I was a kid.
+
+My current affiliation: I am the CTO in Realpad.
+
+My past affiliations:
+
+- I tried (and abandoned) a PhD at SAPE at USI Lugano, Switzerland.
+- I worked as a software engineer at OKsystem.
+- I studied computer science (focusing on databases) at Charles University, Prague.
+- I went to GAMČA in Bratislava, Slovakia.
+
+# About the project
+
+It’s the simplest possible photo-sharing SaaS thing out there that still exhibits the richness of challenges I intend to tackle. Or I don’t know, perhaps there is something like that - I will not spoil the fun by finding out it’s somewhere on Github already!
+
+# About this blog
+
+As of writing these lines it’s not yet sure where this will be hosted. I promised myself not to start looking for a hosting before I have 10 blog posts ready!

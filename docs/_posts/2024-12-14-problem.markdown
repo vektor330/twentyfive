@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "The Problem"
+date:   2024-12-14
+categories: meta
+---
+
+A.k.a., what are we even trying to solve, and why?
+
+Say you take a picture one day that you like, perhaps this one
+
+![DJI_0297.JPG](/assets/images/posts/2024-12-14/DJI_0297.jpg)
+
+You’d like to publish it somewhere online, but [for some reason](https://www.nivati.com/blog/neuroscience-what-social-media-does-to-your-brain) you want to avoid social media. It would be great if you had a simple page for this, almost a portfolio of sorts. Something with as little friction as possible.
+
+And that’s the vision: a web application that on the outside shows a bunch of your pictures in a minimalistic interface, something like this:
+
+![I drew this in Freeform.app](/assets/images/posts/2024-12-14/Screenshot_2024-12-20_at_9.24.23.png)
+
+I drew this in Freeform.app
+
+Clicking a thumbnail opens the full picture.
+
+Dragging a photo on one of the squares uploads it there.
+
+The whole thing is hosted on a URL like `twentyfive.by/matej`
+
+And that’s it! All of the other bells and whistles are completely optional!
+
+Now, are there any other reasons to build this?
