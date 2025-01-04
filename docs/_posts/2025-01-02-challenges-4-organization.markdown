@@ -5,7 +5,7 @@ date:   2025-01-02
 categories: meta challenges
 ---
 
-# Organization challenges
+## Organization challenges
 
 There is not too many of them in fact in this project, which is a nice change of pace from the previous blog posts. 
 
@@ -27,7 +27,7 @@ The **blogging** has its own set of challenges, like picking the platform (more 
 
 Ultimately, this is a marathon, not a sprint. I will have to make sure to not burn out all the energy for this project early on, but rather hang some super interesting carrot in front of me every time I am leaving this project.
 
-# A quick retrospective
+## A quick retrospective
 
 As you can probably see after the past ~10 posts, there is a broad set of challenges that go into even such a trivial product as the one I described. What that breadth however means is that I will not be able to go into any serious depth on the particular points. Let me show you what I mean:
 

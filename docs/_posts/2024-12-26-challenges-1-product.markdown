@@ -5,15 +5,15 @@ date:   2024-12-26
 categories: meta challenges
 ---
 
-# Challenges
+## Challenges
 
 The next few posts in this blog are going to discuss the various challenges we’ll face during the development. It is a sort of a mindmap or a TODO list for us going forward. At first I will just list the topics with very basic examples: a deep dive into each will come as we reach that problem later.
 
 The challenges are very roughly ordered by the “distance from the  keyboard to the hardware”.
 
-# Product challenges
+## Product challenges
 
-## Design
+### Design
 
 I am not good at visual design, and therefore I will need to find a way to mitigate this. Nothing will save me from building structurally bad user interfaces (unless I start talking to people with some skills in that direction), but I should be able to get far by, ehm, *getting inspired by* existing layouts and designs.
 
@@ -32,7 +32,7 @@ One obvious challenge to resolve is the fact the the portfolio in my mind is a 5
 
 Source of the picture: http://pngwing.com/
 
-## User experience
+### User experience
 
 Considering the stated goal of absolute simplicity we’ll strive for a user experience that does not need any onboarding flows:
 
@@ -41,7 +41,7 @@ Considering the stated goal of absolute simplicity we’ll strive for a user exp
 
 There is one UX-related pattern I never had an opportunity to try, and that’s Undo. Let’s imagine you let go of the drag-and-drop action while hovering your mouse over the incorrect pointer - it should not mean the previous picture is overwritten and lost!
 
-## As a thing available to the public
+### As a thing available to the public
 
 …this might need some Privacy Policy, Cookie banner, and a Terms of Service if we allow other people to register and upload their pictures.
 
@@ -52,7 +52,7 @@ Also, this is not meant to be a commercial product, so we’ll not actually try 
 - Using free tiers of everything we use, and making sure we don’t exceed them,
 - Or if so, in a very controlled and mindful way, perhaps by using various rate limits, usage alerts, and so on.
 
-## As a presentation platform
+### As a presentation platform
 
 Considering this is a blog you are now reading, there is a bunch of challenges related to it, too:
 

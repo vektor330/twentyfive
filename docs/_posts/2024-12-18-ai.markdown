@@ -5,7 +5,7 @@ date:   2024-12-18
 categories: meta
 ---
 
-# This blog & project x AI
+## This blog & project x AI
 
 The past two and change years have been the absolute onslaught of a new wave of Artificial Intelligence, especially LLMs. In my view, there is a charitable POV that says, “Hey, I am almost using chatbots more than Google search, especially whenever trying something new,” and then a less charitable one that goes like “Overall, the marketing is so detached from the current value of the AIs that it might be as well seen as peddling snake oil”.
 

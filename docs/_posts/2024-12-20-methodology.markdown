@@ -5,7 +5,7 @@ date:   2024-12-20
 categories: meta
 ---
 
-# The Methodology
+## The Methodology
 
 Or, to put it differently, the *design criteria* for this whole thing. In no particular order a bunch of blurbs:
 
