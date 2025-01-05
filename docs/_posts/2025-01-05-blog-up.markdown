@@ -1,0 +1,55 @@
+---
+layout: post
+title:  The blog is up!
+date:   2025-01-05
+categories: meta blogging
+---
+
+As you can plainly see, the blog is available online on blog.twentyfive.tech! It's been that way since yesterday, and it was mostly smooth sailing to get here:
+
+- I purchased a domain 🎉 the first time in my life. Got it for relatively cheap on wedos.cz for the first year, giving me something to think about around next Christmas latest.
+- GitHub Pages setup started with a bit of misunderstanding where I created a separate GitHub project (repository? need to get the terminology right) thinking it will have to be 2 different things: the project and the blog.
+- First tests can be seen in the [repository history](https://github.com/vektor330/twentyfive/commits/main/): started off with a trivial `index.html` and *immediately* got confused by the fact that the hosting must be done off of either `/` or `/docs` folder: no other options in GitHub.
+- To set up the blog... domain pointing to GitHub Pages I leveraged the experience from the work and set up a `CNAME` DNS record. Unlike with Forpsi we use at work, this time the waiting before the records got applied felt a bit longer, 5-10 minutes perhaps.
+- GitHub Pages recommends [domain verification](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) so I set it up, and again in two steps: a *dry run* and *for real*: the first try was for blog.twentyfive.tech but it was just better to do the whole twentyfive.tech in one go - yes it's written in the **first** paragraph, but I'd have to read with understanding, wouldn't I?
+	- In any case, the verification is done via a `TXT` DNS record, very standard approach if I say so.
+
+Now with the domain configured and some basic content published, it was time to start converting the blog posts I had in Notion so far. Exporting from Notion to MarkDown files & attachment images was reasonably fast, but that's just the first step, then we need...
+
+[Jekyll](https://jekyllrb.com)! The tool looks neat but it's written in Ruby, meaning setting up one more complete development environment on my computer. It also built it from the source, which is an interesting departure from the JavaScript world I was living in recently, where most stuff just needed to *download the whole internet*.
+
+The initial run gave me a folder structure, basic config files and a sample blog post to get me started. Pushing the build into GitHub made it work automagically. In other words, I am not 100% clear what is making it tick, for example the [.markdown files are obviously in the repository](https://github.com/vektor330/twentyfive/tree/main/docs/_posts) yet they are not published online.
+
+<aside>
+<img src="/assets/images/claude-color.png" width="40px" />
+
+*Adjusts glasses with mild irritation* Let me clear up this Jekyll "magic" for you. Jekyll uses a build process that takes your Markdown files and converts them into a static HTML site. The reason you see the files in the repository but not directly online is that GitHub Pages runs the Jekyll build process *server-side* – it processes your Markdown files into HTML and serves those, not the raw Markdown.
+
+In more technical terms: when you push to your repo, GitHub Pages triggers its build pipeline, runs `jekyll build`, and serves the resulting `_site` directory (which you never see in your repo, by the way – and you shouldn't, it should stay in your `.gitignore`). That's why it takes that one minute you mentioned – it's not just copying files, it's running a full build process. *Though I suppose that's still faster than waiting for your typical enterprise CI pipeline...*
+
+</aside>
+
+I could now do without the local Jekyll installation in theory, but it's great to have it installed locally and preview the conversion to HTML without the roundtrip through Git push and GitHub Pages "build". Even if the time from push to seeing updated HTML online is only around 1 minute (neat!).
+
+In any case, all of the articles I had prepared so far in Notion are live & online now, there is a [structure](https://github.com/vektor330/twentyfive/tree/main/docs/assets/images) in place for the images to be attached, and that means the whole pipeline from now on should look like this:
+
+1. Create a new .markdown file with proper name,
+2. Give it metadata in the intro section,
+3. Write blogpost as Markdown,
+4. Push to Git,
+5. Profit 🎉
+
+The editing part can be done also from GitHub web UI, meaning I don't even need Git on the device I want to be writing blogposts on. But then again there is the roundtrip, so...
+
+There is a bunch of problems to tackle before I am 100% happy, but the blog is now "good enough" to start focusing on the actual CI/CD for the project as per the first milestone. What remains for later is a bit of busywork for times when I feel like playing with TwentyFive but not too much:
+
+- I must link the pages together via links - Jekyll has something for it, a way of addressing posts in a bit of a stable way.
+- Replace the default `about` page.
+- The asides by Dušan need a better visual separation from the rest of the text. While at it, I might want to pick a different theme for the whole blog.
+- Some sections make sense to be by default collapsed - no idea how to do it, yet! Simple in Notion, but did not translate well to Markdown.
+- I'd like the images I include in the blog posts to be clickable in order to maximize them.
+
+Already fixed:
+
+- Headings looked like crap, and it was this: https://github.com/jekyll/minima/issues/113
+- A portion of the first blog post got published on the main page of the blog by some templating/coding [magic](https://github.com/vektor330/twentyfive/blob/main/docs/index.markdown?plain=1) proposed by ChatGPT.
