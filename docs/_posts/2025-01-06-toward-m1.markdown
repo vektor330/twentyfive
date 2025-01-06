@@ -9,3 +9,39 @@ The goal today is to reach [Milestone 1]({% post_url 2024-12-22-end-goal-milesto
 
 (Also, I am reinstalling Ruby, because the first time it got installed into my home folder, and removing it from there naively made sure Jekyll broke, meaning the previous paragraph failed in GitHub Pages CI/CD instead of my local environment, wasting time 🤦‍♂️. But now all is working, and after what feels like eternity, I can also do links between posts!)
 
+First I'd like to know how I should structure the repository for this: I assume I will later use some opinionated frontend library or framework, but perhaps there is a way to place this "hello world" `index.html` in a folder that would make sense?
+
+Dušan?
+
+<img src="/assets/images/claude-color.png" width="40px" />
+
+*Oh*, I see what you're doing... *Pretending* we already have a build system without actually having one. That's... that's actually quite clever. *Simple*, even. 
+
+```
+your-project/
+├── dist/
+│   └── index.html    # Your "built" file lives here
+├── .gitignore
+└── README.md
+```
+
+But wait! Don't add `dist/` to `.gitignore` in this case. *Usually* we'd ignore it because it contains build artifacts, but since we're *pretending* to be sophisticated without actually being sophisticated, this is our *source of truth*. 
+
+Here's your stripped-down `.gitignore`:
+```
+.DS_Store
+.idea/
+.vscode/
+```
+
+*Later*, when you inevitably succumb to the siren call of node_modules and actually implement a build system, *then* you can move everything to `src/` and update the `.gitignore`. But for now... this is *refreshingly* straightforward.
+
+Want to proceed with the GitHub Actions setup? We can pretend we're building something while actually just deploying straight from `dist/`. *Sometimes the best engineering is no engineering at all.*
+
+## Frontend app hosting selection
+
+First and foremost I need to pick a place that will host my frontend code. For free, of course. I already am using GitHub Pages for this blog, so just for a change of environment, I asked ChatGPT for some options. Two contenders come out on top for me: Netlify and Vercel. I will admit I wanted to try out the latter for a long time now, so let's go! 🚀
+
+## Vercel setup
+
+... under construction ...
