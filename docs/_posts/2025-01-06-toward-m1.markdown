@@ -1,0 +1,8 @@
+---
+layout: post
+title:  Toward Milestone 1
+date:   2025-01-06
+categories: infra ci/cd
+---
+
+The goal today is to reach [Milestone 1]({% link 2024-12-22-end-goal-milestones.markdown %}), in other words, have a trivial HTML file in my repository, and a hosting set up to receive it via a CI/CD process.
