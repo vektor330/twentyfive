@@ -5,4 +5,7 @@ date:   2025-01-06
 categories: infra ci/cd
 ---
 
-The goal today is to reach [Milestone 1]({% link 2024-12-22-end-goal-milestones.markdown %}), in other words, have a trivial HTML file in my repository, and a hosting set up to receive it via a CI/CD process.
+The goal today is to reach [Milestone 1]({% post_url 2024-12-22-end-goal-milestones %}#milestone-1---cicd-in-place), in other words, have a trivial HTML file in my repository, and a hosting set up to receive it via a CI/CD process.
+
+(Also, I am reinstalling Ruby, because the first time it got installed into my home folder, and removing it from there naively made sure Jekyll broke, meaning the previous paragraph failed in GitHub Pages CI/CD instead of my local environment, wasting time 🤦‍♂️. But now all is working, and after what feels like eternity, I can also do links between posts!)
+
