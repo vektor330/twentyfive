@@ -40,8 +40,33 @@ Want to proceed with the GitHub Actions setup? We can pretend we're building som
 
 ## Frontend app hosting selection
 
-First and foremost I need to pick a place that will host my frontend code. For free, of course. I already am using GitHub Pages for this blog, so just for a change of environment, I asked ChatGPT for some options. Two contenders come out on top for me: Netlify and Vercel. I will admit I wanted to try out the latter for a long time now, so let's go! 🚀
+First and foremost I need to pick a place that will host my frontend code. For free, of course. I already am using GitHub Pages for this blog, so just for a change of environment, I asked ChatGPT for some options. Two contenders come out on top for me: **Netlify** and **Vercel**. I will admit I wanted to try out the latter for a long time now, so let's go! 🚀
 
 ## Vercel setup
 
-... under construction ...
+- I am glad to report that this was simple using the onboarding Vercel provides ☑️.
+- Connection to GitHub super trivial, hosting the `index.html` mentioned above trivial. It's on twentyfive-iota.vercel.app, at least temporarily!
+- Setting up one more DNS record, this time directly on twentyfive.tech, and type `A` - exciting!
+- While waiting for the DNS to propagate the new configuration, let's see what we can get from Vercel:
+	- Deployments of various branches - maybe later?
+	- Analytics - yes please! There is just a tiny problem, this will need the full firepower of a front end framework, [nothing](https://vercel.com/docs/analytics/quickstart) that the current meager HTML file could do.
+	- Speed Insights - amazing, but the same problem applies as above.
+	- Logs - obviously not *access* logs, so empty for the moment. Will get back to this later probably.
+	- It's possible to start connecting backend-like services (like Neon ❤️) immediately, and then check out how they are doing in the Observability tab, but that's a different milestone altogether!
+	- Environment variables - I will need this for sure later.
+	- Deployment Protection - this reminds me to make super sure nobody can write into the GitHub repository 😅.
+- Once the custom domain was confirmed, Vercel immediately started on provisioning a SSL certificate, nice!
+	- Interestingly enough, I don't need to verify the domain now.
+
+![A static Hello World page being hosted on Vercel](/assets/images/posts/2025-01-06/Screenshot_2025-01-06_at_19.45.28.png)
+
+
+Okay, I consider this to be set up. This was fun! Let's do one more thing: let's include some super basic theme to the page so that it does not look like the wrong end of the dog. Any ideas, Dušan?
+
+(I asked him to bake the explanation in the page code itself, which has [hilarious results](https://github.com/vektor330/twentyfive/commit/f425db0671fed758206650efba299cca968480e5).)
+
+## Summary
+
+In any case, we seem to be done for today and the **Milestone 1**: the home page gets updated with just a push to Git, so if we need a more complex build and CI/CD, we'll deal with it later.
+
+:white-checkmark: for this one, please!
