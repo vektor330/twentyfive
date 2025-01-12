@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "The Problem"
 date:   2024-12-14
 categories: meta

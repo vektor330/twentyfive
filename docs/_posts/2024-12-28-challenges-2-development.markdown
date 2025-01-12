@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "Challenges: 2 - Development"
 date:   2024-12-28
 categories: meta challenges

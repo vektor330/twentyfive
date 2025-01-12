@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "The Methodology"
 date:   2024-12-20
 categories: meta

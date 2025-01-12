@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "Challenges: 1 - Product"
 date:   2024-12-26
 categories: meta challenges

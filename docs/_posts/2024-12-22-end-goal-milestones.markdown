@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "The End Goal and Milestones"
 date:   2024-12-22
 categories: meta

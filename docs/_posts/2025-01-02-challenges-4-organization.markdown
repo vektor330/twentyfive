@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "Challenges: 4 - Organization"
 date:   2025-01-02
 categories: meta challenges

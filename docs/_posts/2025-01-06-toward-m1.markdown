@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  Toward Milestone 1
 date:   2025-01-06
 categories: infra ci/cd

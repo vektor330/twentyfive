@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "The Motivation"
 date:   2024-12-16
 categories: meta

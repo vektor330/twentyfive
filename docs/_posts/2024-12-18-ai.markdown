@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "AI"
 date:   2024-12-18
 categories: meta

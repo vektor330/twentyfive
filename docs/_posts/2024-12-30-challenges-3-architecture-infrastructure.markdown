@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  "Challenges: 3 - Architecture & Infrastructure"
 date:   2024-12-30
 categories: meta challenges

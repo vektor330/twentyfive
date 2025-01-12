@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  Vue.js Build System
 date:   2025-01-12
 categories: infra ci/cd

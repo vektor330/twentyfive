@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title:  Blogging Platform Selection
 date:   2025-01-03
 categories: meta blogging

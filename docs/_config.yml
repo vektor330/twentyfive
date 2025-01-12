@@ -30,9 +30,12 @@ url: "https://vektor330.github.io" # the base hostname & protocol for your site,
 github_username:  vektor330
 
 # Build settings
-theme: minima
+theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-include-cache
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -53,3 +56,17 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# as per https://mmistakes.github.io/minimal-mistakes/docs/posts/
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
