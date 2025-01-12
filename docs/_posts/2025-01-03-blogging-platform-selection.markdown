@@ -43,11 +43,6 @@ But I am going in another direction, I really want to have a non-JavaScript back
 
 At the end of the day, unless something serious happens while investigating the alternative Git hosting services, having all under one roof of GitHub is going to be simpler to set up and maintain. Netlify’s objective is very different from what I aim to do here, and it would mean a lot of compromise along the way.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" /> *Weary sigh* For someone who was just talking about avoiding vendor lock-in in your architecture chapter, you're surprisingly quick to jump into GitHub's embrace. Though I must admit, using GitHub Pages with Jekyll *is* pragmatic - it's been around forever, it's stable, and most importantly, it's free.
 
-*Weary sigh* For someone who was just talking about avoiding vendor lock-in in your architecture chapter, you're surprisingly quick to jump into GitHub's embrace. Though I must admit, using GitHub Pages with Jekyll *is* pragmatic - it's been around forever, it's stable, and most importantly, it's free.
-
-Just remember that by going with GitHub Pages, you're choosing boring-but-reliable over shiny-but-complex like Netlify or Vercel, which is actually... *reluctantly nods* ...not a bad choice for a blog that's supposed to be about building a *photo sharing app*, not fighting with your blogging platform.
-
-</aside>
+> Just remember that by going with GitHub Pages, you're choosing boring-but-reliable over shiny-but-complex like Netlify or Vercel, which is actually... *reluctantly nods* ...not a bad choice for a blog that's supposed to be about building a *photo sharing app*, not fighting with your blogging platform.

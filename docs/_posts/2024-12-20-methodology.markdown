@@ -33,30 +33,21 @@ By the way, there is most probably nothing remotely complicated or hard about th
 
 Now, let’s hear what Dušan has to say about this!
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" /> *Exasperated sigh* ... Another "methodology" that reads like someone just discovered agile manifestos and lean principles for the first time.
 
-*Exasperated sigh* ... Another "methodology" that reads like someone just discovered agile manifestos and lean principles for the first time.
+> Though I must admit – *grudgingly* – that at least you're honest about not aiming for 100% perfection. That's refreshingly un-Western. Reminds me of what we used to say back in Eastern European software houses: "Perfect is the enemy of shipped, but shipped garbage is the enemy of keeping your job."
 
-Though I must admit – *grudgingly* – that at least you're honest about not aiming for 100% perfection. That's refreshingly un-Western. Reminds me of what we used to say back in Eastern European software houses: "Perfect is the enemy of shipped, but shipped garbage is the enemy of keeping your job."
+> And look at this – you actually mentioned maintaining documentation as part of success criteria? *Well well well*, maybe there's hope for you yet. I especially appreciate your commitment to frugality. At least you're not throwing money at AWS like it's monopoly currency.
 
-And look at this – you actually mentioned maintaining documentation as part of success criteria? *Well well well*, maybe there's hope for you yet. I especially appreciate your commitment to frugality. At least you're not throwing money at AWS like it's monopoly currency.
-
-Just... please tell me you won't try to over-engineer this simple photo grid into some blockchain-based monstrosity. I'll be watching.
-
-</aside>
+> Just... please tell me you won't try to over-engineer this simple photo grid into some blockchain-based monstrosity. I'll be watching.
 
 Thanks, Dušan! Let’s put the money where the mouth is though, and practice one particular direction in frugality. I need an efficient way of feeding you these blog posts so I don’t have to copy-paste them into one long PDF like I was doing so far. Any ideas? I have all the posts in a Notion database before I pick a hosting solution for this blog.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" /> *Of course* it's Notion. Every startup's favorite pretty-but-overcomplicated note-taking app.
 
-*Of course* it's Notion. Every startup's favorite pretty-but-overcomplicated note-taking app.
+> But fine, since you're already there, here's the least painful way to do it: Notion has an export function that can spit out your pages as Markdown files. Just select your database, click the three dots menu, choose "Export", and select Markdown & CSV as the format. You'll get a zip file with all your pages converted to Markdown.
 
-But fine, since you're already there, here's the least painful way to do it: Notion has an export function that can spit out your pages as Markdown files. Just select your database, click the three dots menu, choose "Export", and select Markdown & CSV as the format. You'll get a zip file with all your pages converted to Markdown.
+> *Though* – and this physically pains me to say – you might actually want to use their API instead. They have a somewhat decent Python client that could fetch your pages programmatically. Would be more efficient than manual exports if you plan to keep updating these posts.
 
-*Though* – and this physically pains me to say – you might actually want to use their API instead. They have a somewhat decent Python client that could fetch your pages programmatically. Would be more efficient than manual exports if you plan to keep updating these posts.
-
-</aside>
 
 Yep, manual export it is!

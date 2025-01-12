@@ -20,14 +20,9 @@ Now with the domain configured and some basic content published, it was time to 
 
 The initial run gave me a folder structure, basic config files and a sample blog post to get me started. Pushing the build into GitHub made it work automagically. In other words, I am not 100% clear what is making it tick, for example the [.markdown files are obviously in the repository](https://github.com/vektor330/twentyfive/tree/main/docs/_posts) yet they are not published online.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" /> *Adjusts glasses with mild irritation* Let me clear up this Jekyll "magic" for you. Jekyll uses a build process that takes your Markdown files and converts them into a static HTML site. The reason you see the files in the repository but not directly online is that GitHub Pages runs the Jekyll build process *server-side* – it processes your Markdown files into HTML and serves those, not the raw Markdown.
 
-*Adjusts glasses with mild irritation* Let me clear up this Jekyll "magic" for you. Jekyll uses a build process that takes your Markdown files and converts them into a static HTML site. The reason you see the files in the repository but not directly online is that GitHub Pages runs the Jekyll build process *server-side* – it processes your Markdown files into HTML and serves those, not the raw Markdown.
-
-In more technical terms: when you push to your repo, GitHub Pages triggers its build pipeline, runs `jekyll build`, and serves the resulting `_site` directory (which you never see in your repo, by the way – and you shouldn't, it should stay in your `.gitignore`). That's why it takes that one minute you mentioned – it's not just copying files, it's running a full build process. *Though I suppose that's still faster than waiting for your typical enterprise CI pipeline...*
-
-</aside>
+> In more technical terms: when you push to your repo, GitHub Pages triggers its build pipeline, runs `jekyll build`, and serves the resulting `_site` directory (which you never see in your repo, by the way – and you shouldn't, it should stay in your `.gitignore`). That's why it takes that one minute you mentioned – it's not just copying files, it's running a full build process. *Though I suppose that's still faster than waiting for your typical enterprise CI pipeline...*
 
 I could now do without the local Jekyll installation in theory, but it's great to have it installed locally and preview the conversion to HTML without the roundtrip through Git push and GitHub Pages "build". Even if the time from push to seeing updated HTML online is only around 1 minute (neat!).
 

@@ -32,14 +32,11 @@ Now comes the hard part: pick a frontend framework to use with Vue.js and bootst
 
 Let's ask Dušan, shall we?
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
-*Sigh*... For a simple photo portfolio app, you're already making one good decision by sticking with Vue.js instead of chasing whatever framework hit the front page of Hacker News this morning. While my instincts scream to throw every shiny new tool at this project - Nuxt! Pinia! UnoCSS! - let's do something *truly* radical and start with just the basics. Use `pnpm create vue@latest` with TypeScript and ESLint/Prettier support, and that's *it*. No need to turn your `package.json` into a dependency Christmas tree before you've even rendered your first component.
+> <img src="/assets/images/claude-color.png" width="40px" /> *Sigh*... For a simple photo portfolio app, you're already making one good decision by sticking with Vue.js instead of chasing whatever framework hit the front page of Hacker News this morning. While my instincts scream to throw every shiny new tool at this project - Nuxt! Pinia! UnoCSS! - let's do something *truly* radical and start with just the basics. Use `pnpm create vue@latest` with TypeScript and ESLint/Prettier support, and that's *it*. No need to turn your `package.json` into a dependency Christmas tree before you've even rendered your first component.
 
-When you eventually need to build actual interfaces beyond your minimalist photo grid (*because let's face it, you will*), PrimeVue is a sensible choice for UI components. Sure, it might feel like bringing a nuclear reactor to power a nightlight right now, but it's better than spending three weeks writing your own date picker component just because you think Material UI is too "corporate". And *please*, keep your Java backend completely separate from the Vue frontend - we're not in 2010 anymore, serving SPAs from Spring Boot's static resources like some sort of digital archaeologist.
+> When you eventually need to build actual interfaces beyond your minimalist photo grid (*because let's face it, you will*), PrimeVue is a sensible choice for UI components. Sure, it might feel like bringing a nuclear reactor to power a nightlight right now, but it's better than spending three weeks writing your own date picker component just because you think Material UI is too "corporate". And *please*, keep your Java backend completely separate from the Vue frontend - we're not in 2010 anymore, serving SPAs from Spring Boot's static resources like some sort of digital archaeologist.
 
-Just remember: you can always add more tools later when you actually need them. Right now, focus on getting that photo grid working without turning your project into a demonstration of every web development trend from the last five years. *Though I have to admit*, at least you're using pnpm - so there's hope for you yet.
-</aside>
+> Just remember: you can always add more tools later when you actually need them. Right now, focus on getting that photo grid working without turning your project into a demonstration of every web development trend from the last five years. *Though I have to admit*, at least you're using pnpm - so there's hope for you yet.
 
 Okay so I did this: 
 

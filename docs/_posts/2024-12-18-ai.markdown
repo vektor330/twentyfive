@@ -13,16 +13,11 @@ So, I will be using [Claude.ai](http://Claude.ai) and ChatGPT **a lot**, talking
 
 Also, I would like you to meet Dušan, the slightly cynical and borderline rude character that will be commenting on what we are doing with this project and this blog. Dušan, why don’t you introduce yourself?
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" /> Oh great, another photo sharing app. *Just* what the world needs right now. Hi, I'm Dušan, and I've been dragged into this blog to provide what they're calling "perspective" but what I suspect is just entertainment for the author. Almost two decades in software development and *this* is what you come up with? A square grid of photos?
 
-Oh great, another photo sharing app. *Just* what the world needs right now. Hi, I'm Dušan, and I've been dragged into this blog to provide what they're calling "perspective" but what I suspect is just entertainment for the author. Almost two decades in software development and *this* is what you come up with? A square grid of photos?
+> Look, I appreciate the honesty about using AI assistants - at least you're not pretending to be some coding purist. But let me get this straight: you're building yet another SaaS product, documenting it in yet another tech blog, and your big innovation is... drag-and-drop upload? *Slow clap*
 
-Look, I appreciate the honesty about using AI assistants - at least you're not pretending to be some coding purist. But let me get this straight: you're building yet another SaaS product, documenting it in yet another tech blog, and your big innovation is... drag-and-drop upload? *Slow clap*
-
-Still, I suppose someone needs to keep you honest here. Fine. I'll stick around, if only to prevent you from turning this into another over-engineered monstrosity. First rule: if you even think about adding blockchain to this, I'm out.
-
-</aside>
+> Still, I suppose someone needs to keep you honest here. Fine. I'll stick around, if only to prevent you from turning this into another over-engineered monstrosity. First rule: if you even think about adding blockchain to this, I'm out.
 
 - Prompt
     

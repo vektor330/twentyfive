@@ -39,20 +39,10 @@ I’ll need at least a simple `todo.md` file in the repository, and I can always
 
 Okay, Dušan, am I making sense here? What am I missing on this level of abstraction? Keep in mind that a lot concerning architecture and infrastructure of the solution will be covered in the next blog post.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" /> Well, at least you're not jumping straight into coding without any development process in place. Going with Vue.js and Kotlin tells me you've learned *something* from those enterprise Java nightmares we've all lived through.
 
-Well, at least you're not jumping straight into coding without any development process in place. Going with Vue.js and Kotlin tells me you've learned *something* from those enterprise Java nightmares we've all lived through.
-
-Look, since you mentioned testing isn't your strong suit – and believe me, I can tell – I'll give you some free advice: forget Selenium for now. Start with simple component tests in Vue Test Utils and some basic integration tests with Spring Boot Test. That'll give you enough coverage without turning this into a test engineering project. And please, for the love of all things binary, set up SonarQube early. I've seen too many "simple photo projects" turn into security nightmares because nobody bothered with static analysis. Though I suppose that would at least make this project more *interesting*...
-
-</aside>
+> Look, since you mentioned testing isn't your strong suit – and believe me, I can tell – I'll give you some free advice: forget Selenium for now. Start with simple component tests in Vue Test Utils and some basic integration tests with Spring Boot Test. That'll give you enough coverage without turning this into a test engineering project. And please, for the love of all things binary, set up SonarQube early. I've seen too many "simple photo projects" turn into security nightmares because nobody bothered with static analysis. Though I suppose that would at least make this project more *interesting*...
 
 Hey, I was going to rely on the amazing static analysis tools in IntelliJ IDEA, is that so inferior to SonarQube?
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
-
-Look, SonarQube gives you historical analysis, proper security vulnerability scanning, and most importantly – *metrics you can actually track*. Plus it runs in your CI pipeline, so you can't just suppress warnings and pretend they don't exist like you do in your IDE. Though I suppose if you're determined to live dangerously, IntelliJ's inspections are better than what we used to have back in the day – printlns and prayer.
-
-</aside>
+> <img src="/assets/images/claude-color.png" width="40px" /> Look, SonarQube gives you historical analysis, proper security vulnerability scanning, and most importantly – *metrics you can actually track*. Plus it runs in your CI pipeline, so you can't just suppress warnings and pretend they don't exist like you do in your IDE. Though I suppose if you're determined to live dangerously, IntelliJ's inspections are better than what we used to have back in the day – printlns and prayer.

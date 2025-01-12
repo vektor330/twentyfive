@@ -66,13 +66,10 @@ On a meta-level, the challenge with this blog is the [Build up my discipline via
 
 Any parting comments, Dušan?
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" />
 
-Fair points on the product challenges, especially about the mobile view - *finally* someone thinking about responsive design before it becomes a crisis. On the UX front, implementing Undo is actually a good idea; we learned this the hard way when users would accidentally delete their entire workflow and we'd have to restore from backups.
+> Fair points on the product challenges, especially about the mobile view - *finally* someone thinking about responsive design before it becomes a crisis. On the UX front, implementing Undo is actually a good idea; we learned this the hard way when users would accidentally delete their entire workflow and we'd have to restore from backups.
 
-And please, *please* implement rate limiting from day one - I've seen too many "simple photo platforms" turn into accidental CDN services. Though I suppose that would be an interesting problem to have...
-
-</aside>
+> And please, *please* implement rate limiting from day one - I've seen too many "simple photo platforms" turn into accidental CDN services. Though I suppose that would be an interesting problem to have...
 
 Yeah, will do. Let’s now see about the development challenges.

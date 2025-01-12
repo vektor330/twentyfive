@@ -42,12 +42,7 @@ And now again from what the user will see down to the hardware:
 - Also, in order to learn for my work, I will pick Vue.js to handle all of my needs in terms of SPA components and their behaviors. But that’s for later - that will be the time when I’ll have to solve the front end APIs, translations, state management, and so on.
 - In any case, I’ll need to pick a reasonable build system for the front end, and figure out a way to deploy the application.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
-
-*Of course* you're starting with server-side rendering and "transitioning" to SPA later - just like every other project that ends up with two half-implemented frontends and twice the maintenance burden. If you're going Vue.js, commit to it from the start and use Nuxt.js to handle any SEO concerns.
-
-</aside>
+> <img src="/assets/images/claude-color.png" width="40px" /> *Of course* you're starting with server-side rendering and "transitioning" to SPA later - just like every other project that ends up with two half-implemented frontends and twice the maintenance burden. If you're going Vue.js, commit to it from the start and use Nuxt.js to handle any SEO concerns.
 
 ### Back end
 
@@ -71,12 +66,7 @@ And now again from what the user will see down to the hardware:
 - The database schema will evolve (even if just a little bit), so there needs to be a way to handle migrations. I will formally consider some alternatives, but we have been using [Flyway](https://github.com/flyway/flyway) for a long time at work, and It Just Works™.
 - And of course, we’ll want our database to be backed up - and the specific way to do that will be dictated by the provider I pick. At work we simply dump the whole thing hourly, zip it and keep it for two years, but perhaps that’s an overkill for me.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
-
-Finally, someone showing Postgres the respect it deserves, though I'm curious how you'll handle neon.tech's connection limits when your local tests start hammering it - maybe consider Docker with Postgres for local development and CI/CD, with neon.tech for production only.
-
-</aside>
+> <img src="/assets/images/claude-color.png" width="40px" /> Finally, someone showing Postgres the respect it deserves, though I'm curious how you'll handle neon.tech's connection limits when your local tests start hammering it - maybe consider Docker with Postgres for local development and CI/CD, with neon.tech for production only.
 
 ### File storage
 
@@ -85,12 +75,7 @@ Finally, someone showing Postgres the respect it deserves, though I'm curious ho
 - One challenge spanning all the way to UI and UX is the upload of the files: I’d like to start with drag&drop, and ideally, show a progress bar. I know - that’s completely irrelevant on a fast connection - but indulge me, please!
 - And of course, let’s make sure there is a backup strategy in place here, too. I was experimenting with Amazon’s Glacier in the long past, and there is something magical about waiting to fetch your backup from a physical magnetic tape storage, but perhaps there are some good alternatives.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
-
-Your mention of ImageMagick gives me *war flashbacks* - at least you're aware of the HEIF/SVG nightmares, but consider using libvips instead; it's faster and less likely to randomly consume all your RAM when someone uploads their entire wedding album in 8K.
-
-</aside>
+> <img src="/assets/images/claude-color.png" width="40px" /> Your mention of ImageMagick gives me *war flashbacks* - at least you're aware of the HEIF/SVG nightmares, but consider using libvips instead; it's faster and less likely to randomly consume all your RAM when someone uploads their entire wedding album in 8K.
 
 ### Monitoring
 
@@ -100,12 +85,7 @@ Your mention of ImageMagick gives me *war flashbacks* - at least you're aware 
 - To see if my product is running, I could just use the uptime monitoring from BetterStack - we use it at work and it’s super simple and works pretty well. There is also a logging solution from them that should be simple to set up.
 - To publish if my product is running, I’ll want to have a status page for it.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
-
-*Oh look*, another "we'll add proper monitoring later" approach - trust me, you'll regret not setting up at least basic metrics from day one. If you're trying to keep it simple, just go with Prometheus and Grafana Cloud's free tier; it's better than discovering your disk is full from angry user emails.
-
-</aside>
+> <img src="/assets/images/claude-color.png" width="40px" /> *Oh look*, another "we'll add proper monitoring later" approach - trust me, you'll regret not setting up at least basic metrics from day one. If you're trying to keep it simple, just go with Prometheus and Grafana Cloud's free tier; it's better than discovering your disk is full from angry user emails.
 
 ### Hosting
 

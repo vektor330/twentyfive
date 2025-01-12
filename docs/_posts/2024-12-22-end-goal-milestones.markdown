@@ -59,12 +59,7 @@ It would not make sense to try to build all the scope described above in one go,
 
 In my case, I don’t really intend to put this project in front of others anytime soon, but I have my own set of constraints. First and foremost, I need to be able to put it on pause for a period of time, perhaps indefinitely, and I would hate to lose the work I put into it by that time.
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
-
-Ah yes, throwing around terms like "MVP" and "Agile" while admitting you might abandon the project indefinitely – how *perfectly* on brand for a developer's side project.
-
-</aside>
+> <img src="/assets/images/claude-color.png" width="40px" /> Ah yes, throwing around terms like "MVP" and "Agile" while admitting you might abandon the project indefinitely – how *perfectly* on brand for a developer's side project.
 
 ### Milestone 1 - CI/CD in Place
 
@@ -112,13 +107,8 @@ There is a lot that will have to go into these milestones on top of what I wrote
 
 ![Screenshot 2024-12-21 at 8.33.59.png](/assets/images/posts/2024-12-22/Screenshot_2024-12-21_at_8.33.59.png)
 
-<aside>
-<img src="/assets/images/claude-color.png" width="40px" />
+> <img src="/assets/images/claude-color.png" width="40px" /> *Hmph* Well, at least you're breaking this down into somewhat sensible milestones instead of trying to boil the ocean all at once. Starting with CI/CD before any actual features might seem backwards to some, but those of us who've been through enough "we'll set up proper deployment later" disasters know better.
 
-*Hmph* Well, at least you're breaking this down into somewhat sensible milestones instead of trying to boil the ocean all at once. Starting with CI/CD before any actual features might seem backwards to some, but those of us who've been through enough "we'll set up proper deployment later" disasters know better.
-
-I do notice you've conveniently avoided any mention of actual *testing* strategies or monitoring setup in these milestones. Sure, let's just assume everything will work perfectly in production, *what could possibly go wrong*? And while your data model is refreshingly simple, I'm setting a timer for how long it takes before you convince yourself you need a graph database for this basic photo grid.
-
-</aside>
+> I do notice you've conveniently avoided any mention of actual *testing* strategies or monitoring setup in these milestones. Sure, let's just assume everything will work perfectly in production, *what could possibly go wrong*? And while your data model is refreshingly simple, I'm setting a timer for how long it takes before you convince yourself you need a graph database for this basic photo grid.
 
 Good points, Dušan! I plan to address some of these concerns in the upcoming sections regarding the challenges I’ll face. Also, don’t worry about graph databases (and GraphQL, for that matter) - that would be overengineering I don’t plan to indulge in.

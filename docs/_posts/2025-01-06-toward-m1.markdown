@@ -13,9 +13,7 @@ First I'd like to know how I should structure the repository for this: I assume 
 
 Dušan?
 
-<img src="/assets/images/claude-color.png" width="40px" />
-
-*Oh*, I see what you're doing... *Pretending* we already have a build system without actually having one. That's... that's actually quite clever. *Simple*, even. 
+> <img src="/assets/images/claude-color.png" width="40px" /> *Oh*, I see what you're doing... *Pretending* we already have a build system without actually having one. That's... that's actually quite clever. *Simple*, even. 
 
 ```
 your-project/
@@ -25,18 +23,18 @@ your-project/
 └── README.md
 ```
 
-But wait! Don't add `dist/` to `.gitignore` in this case. *Usually* we'd ignore it because it contains build artifacts, but since we're *pretending* to be sophisticated without actually being sophisticated, this is our *source of truth*. 
+> But wait! Don't add `dist/` to `.gitignore` in this case. *Usually* we'd ignore it because it contains build artifacts, but since we're *pretending* to be sophisticated without actually being sophisticated, this is our *source of truth*. 
 
-Here's your stripped-down `.gitignore`:
+> Here's your stripped-down `.gitignore`:
 ```
 .DS_Store
 .idea/
 .vscode/
 ```
 
-*Later*, when you inevitably succumb to the siren call of node_modules and actually implement a build system, *then* you can move everything to `src/` and update the `.gitignore`. But for now... this is *refreshingly* straightforward.
+> *Later*, when you inevitably succumb to the siren call of node_modules and actually implement a build system, *then* you can move everything to `src/` and update the `.gitignore`. But for now... this is *refreshingly* straightforward.
 
-Want to proceed with the GitHub Actions setup? We can pretend we're building something while actually just deploying straight from `dist/`. *Sometimes the best engineering is no engineering at all.*
+> Want to proceed with the GitHub Actions setup? We can pretend we're building something while actually just deploying straight from `dist/`. *Sometimes the best engineering is no engineering at all.*
 
 ## Frontend app hosting selection
 
