@@ -9,7 +9,9 @@ Let's face it, the CI/CD we set up [last time]({% post_url 2025-01-06-toward-m1 
 
 One thing to keep in mind is the fact that I'd like to keep this whole thing a single repository for also the future backend part of the project. So let's do a bit of investigation!
 
-TODO clarify this is about BE! Claude recommended Railway.app and Render, so based on gut feeling looking at their landing pages I picked **Railway**. Then it's time to make sure our repository can handle both the frontend and the backend parts of the project, and for that purpose, I am just going to have structure like this:
+First things first - can I even have this? (Yes) Does it depend on the backend hosting provider? (Not much) So which one to pick? Claude recommended Railway.app and Render, so based on gut feeling looking at their landing pages I picked **Railway**. Currently being very unhappy, as it is supposed to be connected to a Git repository that is not configured for it anyhow.
+
+In any case, it's time to make sure our repository can handle both the frontend and the backend parts of the project, and for that purpose, I am just going to have structure like this:
 
 ```
 /
