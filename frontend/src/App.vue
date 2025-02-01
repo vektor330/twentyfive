@@ -1,43 +1,44 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div class="container text-center">
-    <h1 class="display-1 mb-4">Hello World</h1>
-    
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <p class="lead mb-5">Welcome to over-engineered simplicity. Here's what makes this *totally necessary* setup work:</p>
-        
-        <div class="text-start">
-          <h2 class="h5 mb-3">The Anatomy of Modern Excess:</h2>
-          <ul class="list-group list-group-flush bg-transparent mb-4">
-            <li class="list-group-item bg-dark text-light">
-              <code>min-vh-100</code>: Because apparently full height needs a utility class now
-            </li>
-            <li class="list-group-item bg-dark text-light">
-              <code>d-flex align-items-center justify-content-center</code>: Five classes to replace what used to be two lines of CSS
-            </li>
-            <li class="list-group-item bg-dark text-light">
-              <code>container</code>: Adds margins, because raw elements are *so* 1999
-            </li>
-            <li class="list-group-item bg-dark text-light">
-              <code>display-1</code>: Makes headings gigantic, because subtlety is dead
-            </li>
-            <li class="list-group-item bg-dark text-light">
-              <code>text-muted</code>: Gray text, because accessibility is apparently optional
-            </li>
-          </ul>
-        </div>
-
-        <p>
-          Deployed via Vercel, because apparently GitHub Pages wasn't complicated enough.<br>
-          <small>No frameworks were harmed in the making of this page (yet). Version 2, proudly bumped by a human.</small>
-        </p>
+  <div class="photo-grid">
+    <div v-for="i in 25" :key="i" class="photo-cell">
+      <div class="placeholder">
+        {{ i }}
       </div>
     </div>
   </div>
 </template>
 
+<script setup lang="ts">
+// For now, we don't need any script logic
+</script>
+
 <style scoped>
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  padding: 8px;
+
+  /* Modified height to account for header/footer space */
+  height: calc(100vh - 120px); /* Reserve 60px top and bottom */
+  max-width: calc(100vh - 120px);
+  margin: 60px auto; /* Centers grid and creates top/bottom space */
+  box-sizing: border-box;
+}
+
+.photo-cell {
+  aspect-ratio: 1;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 1.5rem;
+}
 </style>
