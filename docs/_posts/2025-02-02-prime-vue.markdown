@@ -1,0 +1,97 @@
+---
+layout: posts
+title:  PrimeVue Attempts
+date:   2025-02-02
+categories: frontend vue primevue
+---
+
+## Premise
+
+After a few weeks of zero time for this project I tried setting up a simple [PrimeVue](http://primevue.org) project yesterday, with the goal of having a responsive grid of 25 (wink wink, TwentyFive) squares on my screen - no additional logic, nothing.
+
+What an absolute chore it was! But let's start from the beginning.
+
+Last time we just had a simple HTML file with some Bootstrap and that was it:
+
+```
+% pnpm dev
+
+> frontend@0.0.0 dev .../twentyfive/frontend
+> vite
+
+
+  VITE v6.0.7  ready in 582 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  Vue DevTools: Open http://localhost:5173/__devtools__/ as a separate window
+  ➜  Vue DevTools: Press Option(⌥)+Shift(⇧)+D in App to toggle the Vue DevTools
+  ➜  press h + enter to show help
+
+```
+
+![Simple static site based on pure HTML, with some styling provided by Bootstrap](/assets/images/posts/2025-02-02/Screenshot_2025-02-02_at_8.25.37.png)
+
+So, let's add PrimeVue for a simple demo, right? Perplexity (got 1 year of Pro for free, so with `loyalty = 0` I jumped the ship from Claude) recommends adding
+
+```
+pnpm add primevue@^3.49.1 primeicons
+```
+
+And a simple `App.vue` showing a basic button and dialog to prove all is working fine:
+
+![Essentially a Hello, World application demonstrating that Vue.js and PrimeVue works in our setup](/assets/images/posts/2025-02-02/Screenshot_2025-02-01_at_18.50.54.jpg)
+
+So far, so good.
+
+## The plot thickens
+
+The next step is to figure out how I am going to build my grid of 5 by 5 photo thumbnails. I just have a few requirements:
+
+- Nothing fancy behavior-wise, we'll need to open a full photo detail upon click and later upload new photos using drag&drop, 
+- Should support a minimalistic design in a simple way,
+- Should be responsive without me going crazy (I am not strong on the frontend, remember?).
+
+So of course, I went to [PrimeBlocks](http://primeblocks.org) and started trying to drop one of them into my App component, following the [instructions manual](https://primeblocks.org/documentation). The promise is that you should be able to use non-trivial, well-preset *blocks* of UI from them - picking either a free or one of the paid offerings.
+
+This is where the trouble started. It's simple enough to follow the instructions and have 1) no build errors 2) no browser console errors, but **the styling simply does not get applied**. A demo block that should look like [this](https://primeblocks.org/free) (find the 3x3 grid) looked like this:
+
+![Broken PrimeBlocks example without proper styling](/assets/images/posts/2025-02-02/Screenshot_2025-02-01_at_19.08.45.jpg)
+
+...and that's after 1 hour of back and forth with Perplexity. Obviously *some* part of the styling is coming through - the icons - while the core structural stuff is not. Needless to say, this is not the hill to die on, so I dropped that direction and went for the approach where I just want to have the output in the form I wanted it.
+
+## Pure CSS approach
+
+After negotiating with Perplexity a bit longer, this is what I came up with: 
+
+![Grid of photos in the widest setting](/assets/images/posts/2025-02-02/Screenshot_2025-02-02_at_8.56.14.png)
+
+![Grid of photos in the middle setting](/assets/images/posts/2025-02-02/Screenshot_2025-02-02_at_8.56.19.png)
+
+![Grid of photos in the narrowest setting](/assets/images/posts/2025-02-02/Screenshot_2025-02-02_at_8.56.23.png)
+
+There is a bunch of things I'd scream about, but will take what I have:
+
+- I don't actually understand the CSS well enough - it was able to spot some basic problems in the GPT-suggested code and fix it myself, but that's very far from being able to create such code myself.
+- Right now, it all lives in `App.vue`, so I'll have to start breaking it down to components soon.
+- This is not based on any "foundational" library of visual styles (is that a term?) and it might be hard to force it to start playing nice later on.
+
+## Next steps
+
+There is a few interesting directions I can take this in now:
+
+- See above - express the ideas above in Bootstrap, Tailwind or Material design.
+- The whole theme is of course almost nothing but 2 colors, and while that certainly counts as *minimalistic*, it's a bit too much on the *minimal* side. I have no idea what I'll do in terms of making it look anyhow reasonable. Scratch that, I knew, that was my plan with PrimeBlocks!
+- The thumbnails could animate as they change their spots while resizing (migth be fun).
+- The theme could have a "dark" variant and perhaps could react to the OS settings.
+
+But of course, the most important point right now will be to achieve [Milestone 2]({% post_url 2024-12-22-end-goal-milestones %}) and provide the 25 photos to show, statically!
+
+
+> <img src="/assets/images/claude-color.png" width="40px" /> Your PrimeVue adventure is... painfully familiar. You started with a simple Bootstrap page that probably took 10 minutes to make, then decided to "upgrade" to a proper component library because that's what all the cool kids do these days, right? And now you're fighting with CSS specificity and missing styles while PrimeBlocks promises you the world but delivers... whatever that unstyled disaster was.
+
+> The pure CSS solution you ended up with is actually not bad - sometimes the simplest approach wins. Though watching you negotiate with Perplexity about CSS is like watching someone try to learn swimming by reading Wikipedia. At least you're honest about not understanding the CSS you're using.
+
+> Your next steps are interesting. Dark mode? Animations? Really? You haven't even implemented the basic photo upload functionality, and you're already thinking about fancy transitions? Though I suppose that's modern web development in a nutshell - make it pretty first, make it work later.
+
+> Want some free advice? Skip the fancy component libraries for now. Get your core functionality working with simple HTML and CSS. You can always make it prettier later - if you still have the energy after fighting with file upload APIs and image optimization.
