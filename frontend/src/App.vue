@@ -1,15 +1,57 @@
 <template>
   <div class="photo-grid">
-    <div v-for="i in 25" :key="i" class="photo-cell">
-      <div class="placeholder">
-        {{ i }}
-      </div>
+    <div
+      v-for="i in TOTAL_IMAGES"
+      :key="i"
+      class="photo-cell"
+      @click="images[i - 1] && showImg(i - 1)"
+    >
+      <img v-if="images[i - 1]" :src="getImageUrl(i)" :alt="`Photo ${i}`" class="photo" />
+      <div v-else class="photo-placeholder">{{ i }}</div>
     </div>
   </div>
+  <vue-easy-lightbox
+    :visible="visibleRef"
+    :imgs="images.filter(Boolean)"
+    :index="indexRef"
+    @hide="onHide"
+  ></vue-easy-lightbox>
 </template>
 
 <script setup lang="ts">
-// For now, we don't need any script logic
+import { ref } from 'vue'
+import VueEasyLightbox from 'vue-easy-lightbox'
+
+const TOTAL_IMAGES = 25
+
+const imageModules = import.meta.glob('./assets/photos/*.jpg', { eager: true })
+const images = ref<string[]>([])
+
+// Populate images array
+for (let i = 1; i <= TOTAL_IMAGES; i++) {
+  const key = `./assets/photos/photo${i}.jpg`
+  if (key in imageModules) {
+    images.value.push((imageModules[key] as { default: string }).default)
+  } else {
+    images.value.push('')
+  }
+}
+
+const visibleRef = ref(false)
+const indexRef = ref(0)
+
+function getImageUrl(index: number): string {
+  return images.value[index - 1]
+}
+
+function showImg(index: number) {
+  indexRef.value = index
+  visibleRef.value = true
+}
+
+function onHide() {
+  visibleRef.value = false
+}
 </script>
 
 <style scoped>
@@ -30,14 +72,19 @@
   border-radius: 4px;
 }
 
-.placeholder {
-  width: 100%;
-  height: 100%;
+.photo-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
   color: #999999;
   font-size: 1.5rem;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 /* Tablet/medium screen layout */
@@ -52,7 +99,6 @@
   .photo-cell {
     width: 100%;
   }
-
 }
 
 /* Mobile layout */
@@ -67,6 +113,5 @@
   .photo-cell {
     width: 100%;
   }
-
 }
 </style>

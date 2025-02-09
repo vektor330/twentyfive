@@ -15,7 +15,8 @@
   "dependencies": {
     "primeicons": "^7.0.0",
     "primevue": "^3.49.1",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-easy-lightbox": "^1.19.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
