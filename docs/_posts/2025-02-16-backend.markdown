@@ -1,0 +1,49 @@
+---
+layout: posts
+title:  Backend
+date:   2025-02-16
+categories: backend railway spring-boot
+---
+
+## Goal
+
+It must be getting old, but today's goal was again as unambitious as I could muster: build the simplest possible backend, and have the frontend talk to it, smoke test-style.
+
+## Playing field: Railway
+
+Not sure I mentioned it in one of the previous posts, but some weeks ago I picked [Railway](railway.com) as the hosting for the backend Java code. I don't recall why exactly (and I'd have to read the blog to find out - which is not getting me closer to the goal of actually writing all this), but since I set it up those weeks ago it was listening to all the GitHub pushes and reacting by... sending me an email about a failed build.
+
+So anyway, it was the time to build something trivial to then start extending with database, proper API, and whatnot. And it really fits on one page here and a [few lines of change in the repository](https://github.com/vektor330/twentyfive/compare/ba2ec56d1b87e9b996d84cf4042098efd218feed...b0460872099f10aefd98cf93c24d8990a7259991) (if you disregard the `gradelw` and whatnot):
+
+- The backend is a Spring Boot app built using the Initializr.
+	- For some reason, the integration in IntelliJ failed to create the project, but fetching it from the web https://start.spring.io "just worked fine".
+- There is only one endpoint for now: `/health` that does... nothing dynamic for now.
+	- Railway however treats it as an indicator of a healthy instance, so I'll definitely keep improving it as I go with a self-test.
+	- Considering it's the only API the backend has for now, it's what the frontend tries to fetch upon the start of the UI (I wish I had a better terminology, alas) and shows it in the footer.
+
+## How it went
+
+Once this was deployed, it was again a bit of a waiting game until the DNS changes propagated far enough for Railway to pick up (I wanted to have a separate domain for the API of course, which is... api.twentyfive.tech). The build takes considerably longer than the frontend one, minutes instead of seconds, which is obviously some sort of Java / backend tax - because neither frontend nor backend have any code yet worth mentioning.
+
+The experience of setting up everything in Railway was super pleasant and polished, the UI seems to invite me to start setting up microservices (must...resist...), and overall, between Vercel and this, it's an absolute pleasure to deliver *these borderline toy apps, I have no illusions about how it scales up to something seriously complicated*.
+
+Of course, once everything works fine on the localhost, it's time to be reminded of [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) on production, and set up the headers in a semi-flexible way (`application.properties`). Then it's time to do the same thing on the frontend and teach it about the difference between `dev` and `prod` build in terms of what the API URL root is. Perplexity keeps being an amazing help, let's see how it goes once the code is more than like 5 lines.
+
+
+## Dušan?
+
+> <img src="/assets/images/claude-color.png" width="40px" /> A few observations that made me both chuckle and wince:
+
+> 1. Going from "Hello World" straight to Railway and Vercel? Why not throw in a Kubernetes cluster while you're at it? Though I must admit, Railway's developer experience is... surprisingly decent.
+> 2. Your CORS adventure - ah yes, the eternal dance of local vs production environments. Always nice to be reminded of that after deployment, isn't it? At least you're handling it in application.properties rather than hardcoding it like some enthusiastic junior would.
+> 3. The Spring Boot Initializer situation is classic. IntelliJ's integration fails but the web version works fine? Of course it does. IDE integrations are like modern art - complex, confusing, and often broken.
+
+> Your comment about not fully understanding the AI-generated code is... actually a valid concern. Are we all becoming code integration specialists rather than programmers? Though I suppose copying from an AI is marginally better than copying from StackOverflow without understanding.
+> One thing though - your `main.ts` is suspiciously clean. No store setup? No router? No arbitrary middleware that someone will forget about in three months? Almost too minimal. Don't worry, I'm sure that will change soon enough.
+
+
+## Where are we on the project
+
+Well, the last time we wanted to get to pictures in S3 and then have a backend, so we have a backend instead. *Next time*, it would be great to have the photos in some S3 (will need to pick a provider), and URLs to them hard-coded on the backend to send them via some actual API call.
+
+You know, baby steps. It's only mid-February.
