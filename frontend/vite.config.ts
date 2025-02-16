@@ -4,9 +4,11 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
+import { API_BASE_URL } from './src/config'
+
 // Set API target based on environment
 const isDevelopment = process.env.NODE_ENV === 'development'
-const apiTarget = isDevelopment ? 'http://localhost:8080' : 'https://api.twentyfive.tech'
+const apiTarget = isDevelopment ? API_BASE_URL.development : API_BASE_URL.production
 
 export default defineConfig({
   plugins: [

@@ -26,6 +26,8 @@
 import { ref, onMounted } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 
+import { API_BASE_URL } from './config'
+
 const TOTAL_IMAGES = 25
 
 const imageModules = import.meta.glob('./assets/photos/*.jpg', { eager: true })
@@ -60,8 +62,12 @@ function onHide() {
 const healthCode = ref<number | null>(null)
 
 onMounted(async () => {
+  const apiUrl = import.meta.env.DEV
+    ? '/health'
+    : `${API_BASE_URL.production}/health`
+
   try {
-    const response = await fetch('/health')
+    const response = await fetch(apiUrl)
     healthCode.value = response.status
   } catch (error) {
     healthCode.value = 0
