@@ -16,10 +16,14 @@
     :index="indexRef"
     @hide="onHide"
   ></vue-easy-lightbox>
+  <footer class="footer">
+    HTTP <span v-if="healthCode !== null">{{ healthCode }}</span>
+    <span v-else>Loading...</span>
+  </footer>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 
 const TOTAL_IMAGES = 25
@@ -52,6 +56,17 @@ function showImg(index: number) {
 function onHide() {
   visibleRef.value = false
 }
+
+const healthCode = ref<number | null>(null)
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/health')
+    healthCode.value = response.status
+  } catch (error) {
+    healthCode.value = 0
+  }
+})
 </script>
 
 <style scoped>
@@ -85,6 +100,13 @@ function onHide() {
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
+}
+
+.footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 1rem;
+  color: #333;
 }
 
 /* Tablet/medium screen layout */
