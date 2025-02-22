@@ -1,6 +1,6 @@
 <template>
-  <div class="photo-grid">
-    <div v-for="(image, index) in images" :key="index" class="photo-cell" @click="showImg(index)">
+  <div class="photo-grid root">
+    <div v-for="(image, index) in images" :key="index" class="photo-cell" @click="image && showImg(index)">
       <img v-if="image" :src="image.url" :alt="`Photo ${index + 1}`" class="photo" />
       <div v-else class="photo-placeholder">{{ index + 1 }}</div>
     </div>
@@ -81,7 +81,7 @@ onMounted(async () => {
 
 .photo-cell {
   aspect-ratio: 1;
-  background-color: #f0f0f0;
+  background-color: var(--placeholder-background);
   border-radius: 4px;
   cursor: pointer;
 }
@@ -105,7 +105,7 @@ onMounted(async () => {
   text-align: center;
   padding: 16px;
   font-size: 1rem;
-  color: #333;
+  color: var(--text);
 }
 
 /* Tablet/medium screen layout */
