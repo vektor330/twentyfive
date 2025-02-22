@@ -1,27 +1,17 @@
 <template>
   <div class="photo-grid">
-    <div
-      v-for="i in TOTAL_IMAGES"
-      :key="i"
-      class="photo-cell"
-      @click="images[i - 1] && showImg(i - 1)"
-    >
-      <img v-if="images[i - 1]" :src="getImageUrl(i)" :alt="`Photo ${i}`" class="photo" />
-      <div v-else class="photo-placeholder">{{ i }}</div>
+    <div v-for="(image, index) in images" :key="index" class="photo-cell" @click="showImg(index)">
+      <img v-if="image" :src="image.url" :alt="`Photo ${index + 1}`" class="photo" />
+      <div v-else class="photo-placeholder">{{ index + 1 }}</div>
     </div>
   </div>
-  <vue-easy-lightbox
-    :visible="visibleRef"
-    :imgs="images.filter(Boolean)"
-    :index="indexRef"
-    @hide="onHide"
-  ></vue-easy-lightbox>
+  <vue-easy-lightbox :visible="visibleRef" :imgs="images.filter(img => img !== null).map(img => img!.url)"
+    :index="indexRef" @hide="onHide"></vue-easy-lightbox>
   <footer class="footer">
     HTTP <span v-if="healthCode !== null">{{ healthCode }}</span>
     <span v-else>Loading...</span>
   </footer>
 </template>
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
@@ -30,29 +20,21 @@ import { API_BASE_URL } from './config'
 
 const TOTAL_IMAGES = 25
 
-const imageModules = import.meta.glob('./assets/photos/*.jpg', { eager: true })
-const images = ref<string[]>([])
-
-// Populate images array
-for (let i = 1; i <= TOTAL_IMAGES; i++) {
-  const key = `./assets/photos/photo${i}.jpg`
-  if (key in imageModules) {
-    images.value.push((imageModules[key] as { default: string }).default)
-  } else {
-    images.value.push('')
-  }
+interface Picture {
+  id: string;
+  url: string;
 }
+
+const images = ref<(Picture | null)[]>(Array(TOTAL_IMAGES).fill(null))
 
 const visibleRef = ref(false)
 const indexRef = ref(0)
 
-function getImageUrl(index: number): string {
-  return images.value[index - 1]
-}
-
 function showImg(index: number) {
-  indexRef.value = index
-  visibleRef.value = true
+  if (images.value[index]) {
+    indexRef.value = index
+    visibleRef.value = true
+  }
 }
 
 function onHide() {
@@ -62,14 +44,24 @@ function onHide() {
 const healthCode = ref<number | null>(null)
 
 onMounted(async () => {
-  const apiUrl = import.meta.env.DEV
-    ? '/health'
-    : `${API_BASE_URL.production}/health`
+  const apiBaseUrl = import.meta.env.DEV
+    ? API_BASE_URL.development
+    : API_BASE_URL.production;
 
   try {
-    const response = await fetch(apiUrl)
-    healthCode.value = response.status
+    const healthResponse = await fetch(`${apiBaseUrl}/health`)
+    healthCode.value = healthResponse.status
+
+    const galleryResponse = await fetch(`${apiBaseUrl}/gallery`)
+    const galleryData = await galleryResponse.json()
+    const fetchedImages = galleryData.pictures as Picture[]
+    fetchedImages.forEach((img, index) => {
+      if (index < TOTAL_IMAGES) {
+        images.value[index] = img
+      }
+    })
   } catch (error) {
+    console.error('Error fetching data:', error)
     healthCode.value = 0
   }
 })
@@ -91,6 +83,7 @@ onMounted(async () => {
   aspect-ratio: 1;
   background-color: #f0f0f0;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .photo-placeholder {
