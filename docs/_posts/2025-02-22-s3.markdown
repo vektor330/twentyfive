@@ -1,0 +1,65 @@
+---
+layout: posts
+title:  S3 & Dark Theme
+date:   2025-02-22
+categories: backend railway spring-boot
+---
+
+## Goal
+
+Today's goal (spoiler alert: reached again, not ambitious enough!) is to find ourselves a place to store the picture files - some kind of S3 service - and serve them from there instead of frontend assets 🙈
+
+## Options for the S3-like service
+
+This one is perhaps quite simple, there is the O.G. S3 from Amazon AWS, but almost everyone has some analogue: OVH we use at work has their own, for example. I could roll my own Min.io, but that's beside the point for the moment, I just need something.
+
+Doesn't Railway have something? I mean, S3 is kind of a backend-y thing right? Nope, unfortunately not at the moment.
+
+What about Vercel? What if someone didn't want to have a backend at all? Oh yes! There is a [blob storage](https://vercel.com/docs/storage/vercel-blob) 🎉
+
+
+So the next minutes saw me manually uploading the 25 files I had in static assets. And then copy-pasting their public URLs that look like this:
+
+> `https://c64hwz2ywdythczm.public.blob.vercel-storage.com/sample/photo1-FfAR69Cq8bPwjIvVEzeBoEPW1W0VWf.jpg`
+
+...copying them where?
+
+## Backend API serving the *gallery* *pictures*
+
+See? We have our first two domain objects, so far in the simplest possible shape: a **Gallery** has 0..N **Pictures**, and a **Picture** has a string **ID** and a string **URL**. That's literally it for now, and there is the simplest of all JSON endpoints serving these 25 hard-coded URLs.
+
+### Security concern?
+
+Is it a good idea to push such URLs directly into the GitHub repo? Isn't there like a whole sea of bots scraping such, then fetching them and causing me to see data egress charges on Vercel?
+
+Perhaps, but what's then stopping such bots from just accessing [twentyfive.tech](twentyfive.tech) and doing the same thing? There will be time to solve this later.
+
+## Frontend code to load the pictures from the API
+
+Okay, so I was being boring again, and asked Perplexity for some more changes to my front end code to read all the pictures and their URLs from this API. And... it didn't work. But then I fixed the local CORS and then it did. There is now a nice properties file describing the backend behavior when the environment is `dev`, and it sets up CORS without any trouble.
+
+It felt like the good idea to check what happens if the backend sends fewer than 25 pictures (would totally happen for new galleries!). And it breaks down. The CSS just gives up, unceremoniously. Back to the placeholders then, and having them fill up the un-set cells.
+
+All works fine locally, so it's time to push this to production. Looking at the [changes](https://github.com/vektor330/twentyfive/commit/ada052) it's clear we'll have to start refactoring the Vue code sooner rather than later.
+
+### New problem!
+
+Vercel reloaded the front end project faster than Railway reloaded the back end, so for a few moments I was staring at a blank list of 25 placeholders, reconsidering my life choices - before I realized what is going on, and it caught on.
+
+![25 empty placeholders sadly staring at me](/assets/images/posts/2025-02-22/Screenshot_2025-02-22_at_15.21.19.png)
+
+## Next time
+
+Next up I should set up a database backend to keep the list of URLs for the gallery **not in a .java file**, but for now let's have some fun!
+
+...as in, I proudly present the work of an LLM again - there is now dark and light theme obeying the OS/browser preference!
+
+![Light theme - meaning what was there now](/assets/images/posts/2025-02-22/Screenshot_2025-02-22_at_15.21.23.png)
+
+![Dark theme - this is new!](/assets/images/posts/2025-02-22/Screenshot_2025-02-22_at_16.07.26.png)
+
+Also, we now have a project logo - this is what DALL•E thinks is a vertically-symmetrical image:
+
+![TwentyFive project logo](/assets/images/posts/2025-02-22/twenty-five-logo.png)
+
+(You see that 2 and 5 are kinda mirror images, right?)
