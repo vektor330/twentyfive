@@ -3,7 +3,7 @@ package cz.vektor330.twentyfive.backend.model;
 import java.util.List;
 
 public record GalleryDto(
-    List<PictureDto> pictures
+    List<Picture> pictures
 ) {
 
 }
