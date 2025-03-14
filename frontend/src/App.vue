@@ -10,10 +10,18 @@
   <footer class="footer">
     HTTP <span v-if="healthCode !== null">{{ healthCode }}</span>
     <span v-else>Loading...</span>
+    <div class="auth-buttons">
+      <button v-if="!isAuthenticated" @click="login">Log in</button>
+      <button v-else @click="handleLogout">Log out</button>
+      <span v-if="isAuthenticated">Welcome, {{ user?.name }}!</span>
+    </div>
   </footer>
 </template>
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useAuth0 } from '@auth0/auth0-vue';
+
 import VueEasyLightbox from 'vue-easy-lightbox'
 
 import { API_BASE_URL } from './config'
@@ -42,6 +50,16 @@ function onHide() {
 }
 
 const healthCode = ref<number | null>(null)
+
+const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0()
+
+const login = () => {
+  loginWithRedirect()
+}
+
+const handleLogout = () => {
+  logout({ logoutParams: { returnTo: window.location.origin } })
+}
 
 onMounted(async () => {
   const apiBaseUrl = import.meta.env.DEV
@@ -106,6 +124,24 @@ onMounted(async () => {
   padding: 16px;
   font-size: 1rem;
   color: var(--text);
+}
+
+.auth-buttons {
+  margin-top: 8px;
+}
+
+.auth-buttons button {
+  margin: 0 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--placeholder-background);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.auth-buttons button:hover {
+  opacity: 0.8;
 }
 
 /* Tablet/medium screen layout */

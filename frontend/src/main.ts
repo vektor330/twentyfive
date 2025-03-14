@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createAuth0 } from '@auth0/auth0-vue'
 import PrimeVue from 'primevue/config'
 import App from './App.vue'
 
@@ -9,5 +10,19 @@ import 'primeicons/primeicons.css'
 import './assets/global.css'
 
 const app = createApp(App)
+
 app.use(PrimeVue)
+
+app.use(
+  createAuth0({
+    domain: import.meta.env.VITE_AUTH0_DOMAIN as string,
+    clientId: import.meta.env.VITE_AUTH0_CLIENT_ID as string,
+    cacheLocation: 'localstorage',
+    useRefreshTokens: true,
+    authorizationParams: {
+      redirect_uri: window.location.origin,
+    },
+  }),
+)
+
 app.mount('#app')

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@auth0/auth0-vue':
+        specifier: ^2.4.0
+        version: 2.4.0(typescript@5.6.3)
       primeicons:
         specifier: ^7.0.0
         version: 7.0.0
@@ -72,6 +75,17 @@ packages:
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
+
+  '@auth0/auth0-spa-js@2.1.3':
+    resolution: {integrity: sha512-NMTBNuuG4g3rame1aCnNS5qFYIzsTUV5qTFPRfTyYFS1feS6jsCBR+eTq9YkxCp1yuoM2UIcjunPaoPl77U9xQ==}
+
+  '@auth0/auth0-vue@2.4.0':
+    resolution: {integrity: sha512-12iLvojP8Pvxqu2Abxzksp0HqlSovGiAUhWrppnOaJP02MZEBQo+c/IwM6VbM0edNk+eqqjX5u96iw5peaCPSg==}
+    peerDependencies:
+      vue-router: ^4.0.12
+    peerDependenciesMeta:
+      vue-router:
+        optional: true
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -1627,6 +1641,15 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.25
 
   '@antfu/utils@0.7.10': {}
+
+  '@auth0/auth0-spa-js@2.1.3': {}
+
+  '@auth0/auth0-vue@2.4.0(typescript@5.6.3)':
+    dependencies:
+      '@auth0/auth0-spa-js': 2.1.3
+      vue: 3.5.13(typescript@5.6.3)
+    transitivePeerDependencies:
+      - typescript
 
   '@babel/code-frame@7.26.2':
     dependencies:
