@@ -8,6 +8,7 @@ import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 
 import './assets/global.css'
+import { API_BASE_URL } from './config'
 
 const app = createApp(App)
 
@@ -21,6 +22,8 @@ app.use(
     useRefreshTokens: true,
     authorizationParams: {
       redirect_uri: window.location.origin,
+      scope: 'openid profile email offline_access',
+      audience: API_BASE_URL.production,
     },
   }),
 )

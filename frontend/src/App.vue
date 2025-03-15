@@ -51,7 +51,7 @@ function onHide() {
 
 const healthCode = ref<number | null>(null)
 
-const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0()
+const { loginWithRedirect, logout, user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 
 const login = () => {
   loginWithRedirect()
@@ -70,7 +70,13 @@ onMounted(async () => {
     const healthResponse = await fetch(`${apiBaseUrl}/health`)
     healthCode.value = healthResponse.status
 
-    const galleryResponse = await fetch(`${apiBaseUrl}/gallery`)
+    const token = await getAccessTokenSilently();
+
+    const galleryResponse = await fetch(`${apiBaseUrl}/gallery`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
     const galleryData = await galleryResponse.json()
     const fetchedImages = galleryData.pictures as Picture[]
     fetchedImages.forEach((img, index) => {
