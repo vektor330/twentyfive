@@ -17,7 +17,7 @@ public class HealthCheckController {
   }
 
   @GetMapping("/health")
-  public ResponseEntity<String> greeting() {
+  public ResponseEntity<String> health() {
     try {
       galleryService.get();
       return ResponseEntity.ok("All OK!");

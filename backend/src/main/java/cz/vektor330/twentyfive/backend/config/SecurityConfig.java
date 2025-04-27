@@ -28,6 +28,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class SecurityConfig {
 
+  private static final long TOKEN_MAX_AGE = 3600L;
+
   @Value("${auth0.audience}")
   private String audience;
 
@@ -63,7 +65,7 @@ public class SecurityConfig {
     config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
     config.setExposedHeaders(List.of("X-Auth-Token"));
-    config.setMaxAge(3600L);
+    config.setMaxAge(TOKEN_MAX_AGE);
     config.setAllowCredentials(true);
 
     final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
