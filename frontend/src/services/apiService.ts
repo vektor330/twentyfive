@@ -12,7 +12,7 @@ export const TOTAL_IMAGES = 25
 export function useGalleryService() {
   const images = ref<(Picture | null)[]>(Array(TOTAL_IMAGES).fill(null))
   const healthCode = ref<number | null>(null)
-  const { getAccessTokenSilently } = useAuth0()
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0()
 
   async function loadGallery(userSlug?: string, gallerySlug?: string) {
     const apiBaseUrl = import.meta.env.DEV ? API_BASE_URL.development : API_BASE_URL.production
@@ -21,19 +21,23 @@ export function useGalleryService() {
       const healthResponse = await fetch(`${apiBaseUrl}/health`)
       healthCode.value = healthResponse.status
 
-      const token = await getAccessTokenSilently()
-
       const params = new URLSearchParams()
       if (userSlug) params.append('user', userSlug)
       if (gallerySlug) params.append('gallery', gallerySlug)
       const queryString = params.toString()
 
+      const headers: Record<string, string> = {}
+
+      // Only add auth token if user is authenticated
+      if (isAuthenticated.value) {
+        const token = await getAccessTokenSilently()
+        headers['Authorization'] = `Bearer ${token}`
+      }
+
       const galleryResponse = await fetch(
         `${apiBaseUrl}/gallery${queryString ? '?' + queryString : ''}`,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers,
         },
       )
       const galleryData = await galleryResponse.json()
