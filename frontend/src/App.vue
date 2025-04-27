@@ -14,9 +14,14 @@
 <script setup lang="ts">
 import { useAuthService } from './services/authService'
 import { useGalleryService } from './services/apiService'
+import { onMounted } from 'vue'
 
-const { healthCode } = useGalleryService()
+const { healthCode, loadGallery } = useGalleryService()
 const { login, logout, user, isAuthenticated } = useAuthService()
+
+onMounted(() => {
+  loadGallery()
+})
 </script>
 
 <style scoped>
