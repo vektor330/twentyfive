@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createAuth0 } from '@auth0/auth0-vue'
 import PrimeVue from 'primevue/config'
 import App from './App.vue'
+import router from './router'
 
 import 'primevue/resources/themes/lara-light-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
@@ -13,6 +14,7 @@ import { API_BASE_URL } from './config'
 const app = createApp(App)
 
 app.use(PrimeVue)
+app.use(router)
 
 app.use(
   createAuth0({
