@@ -1,0 +1,65 @@
+---
+layout: posts
+title:  What Now?
+date:   2025-05-09
+categories: TODO
+---
+
+The time, energy and motivation I can muster for the project in the past weeks is dwindling, which is probably obvious also from the gap since the last blog post.
+
+## What I did
+
+Two weeks ago I did a few things to keep the ball... inching forward? but did not even blog about it:
+
+- There was a problem with displaying the HTTP status on the main page, somehow related to the way the frontend app starts, and this was a good example of how "vibe coding" can help - I did not fully understand the problem, I don't fully understand the solution, but the change was simple and the effect ("it works") is obvious. 🎉
+- Changed the business logic to start showing the gallery (the only one so far) to the visitors, ie. not-logged-in users, again. There will probably be some effect on the cost of running this project, but so what.
+- Managed to coax Copilot to help me set up a frontend router, so that now I can not only access `twentyfive.tech`, but also something like `twentyfive.tech/g/vektor/main` for my main gallery, and `twentyfive.tech/g/<user-slug>/<gallery-slug>` in general. This gets sent to the backend API and it is ready for the next steps.
+
+Oh, and I asked Claude to double-check my commit diff, and of course it found a small problem. The value of having different AI assistants cross-check their work keeps being very interesting.
+
+On a configuration front, I changed both Vercel and Railway to only run a build if the changes happened in their respective `backend`/`frontend` folders. I'll check by pushing just this one blog post and see that no deployment happens elsewhere.
+
+
+## What I tried to do
+
+Yesterday, I tried and failed to achieve something rather simple (or so I thought): logged in users, looking at their own gallery, should be able to see a button to upload a picture. I wanted to start super simple, so a dialog with just file upload field and a picker of 1..25 positions in the gallery should appear.
+
+For this, I wanted to try out Windsurf's IDE, having listened to a podcast with their CEO. The first surprise was to see it's essentially a normal VS Code with a super typical approach to talking to the AI assistant. Listening to the podcast you'd think it would be a bigger departure, but okay, at least it's somewhat familiar. It did not inspire much confidence when the plugins that are supposed to bring in Vue.js support reported repeated crashes and essentially refused to work properly, but hey, it's my fault for not picking React.
+
+Influenced by the recent discussions about how to [vibe code efficiently](https://refactoring.fm/p/vibe-coding-workflows) I wanted to start by showing the project overview to the chatbot, and explaining the idea top-down. As per usual though, the suggestions kicked off with hallucinating a PrimeVue component (out of 5 recommended, only one did not exist though, so I guess at least something?) and then continued with the now-traditional mix of wow effect and head-banging frustration.
+
+The dialog got created alright! The button did show up and wired up nicely and even got placed correctly (my mistake though for not having a good idea of how to break down the UI into coherent chunks), but then it just stopped opening the modal dialog.
+
+My mental model at such a moment is the following: like the coyote in the road runner gags, I am way over the cliff edge by that moment, I did not follow the AI assistant well enough to know what exactly is going wrong. I can either fall (and retry from scratch), or try to push on a bit more.
+
+![Road runner and Wile E. Coyote](https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/15284604/cliff.0.0.1497054003.jpg)
+
+And pushed a bit more I did! But it was just a stream of disappointments:
+
+- Windsurf (or should I say, Cascade?) proposed to use `mitt` for an event bus in my application that has a total of one view with a grand total of **TWO** components now. After a quick check, it agreed that it's probably an overkill, and went with Vue Props/Events.
+- When the whole gallery stopped showing due to a bug, Cascade proposed to change CSS 🤷‍♂️ Of course, that's again on me, once I provided the browser console log, it resolved the issue quickly.
+- Whatever the issue we needed to resolve, the AI's solution was always to *add* more code overall, never to go back and rethink some previous step, try to reorganize, ...
+
+Windsurf tries to nudge you in the direction of using the agentic approach, and I had to turn it on to check out the in-Windsurf "web browser" preview functionality, but there is just no way I could delegate anything this way - it would be the road runner situation, but I'd be falling from the cliff later and from a larger height, if that analogy makes sense.
+
+## Summary
+
+It's quite hard to make a sense out of the current state of things. On the one hand, the overall experience of using the AI assistants is pretty nice - the product wrapper around the thing doing the talking to you is neat:
+
+- It fetches the necessary context quite well,
+- It responds quite fast,
+- The flow of applying the proposed changes is very clear,
+- Having the built-in browser in the loop seems like a correct path to take.
+
+If only **the thing talking to you wasn't so completely clueless most of the time**.
+
+
+It could very well be that I am at fault here: perhaps Vue.js was a bad choice as the assistants could be much better on React (am I going to pivot though?), I could be neither too good with it to steer correctly nor junior enough to let it steer itself more, perhaps the paid versions of the tools perform better...
+
+But this super small project right now (it's literally a few hundred lines of code so far), built on a green field, with the still latest versions of everything, this should be the best case scenario for the AI assistants/agents, but NO, they fall on their collective faces.
+
+People keep mentioning how non-technical people build these amazing applications using tools like Windsurf, v0, Bolt and similar, but it mismatches with my own experience so much! Imagining myself with even less of an idea of what the frontend coding is doing, and without my somewhat relevant backend skills, there is no way I could make these agents build anything more than a facade that crumples the moment you touch it.
+
+## Meta
+
+How to proceed with the project? I am getting bored with it, so it must start moving faster with more modest goals. I must have the file upload. I will have another go at vibe-building the simplest of all upload forms, then build the simples of all backend APIs to upload the files, and take a step back to decide if I want to continue from there on.
