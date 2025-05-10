@@ -20,7 +20,8 @@ public class GalleryController {
   }
 
   @GetMapping("/gallery")
-  public ResponseEntity<GalleryDto> getGallery(@RequestParam(required = false) final String user,
+  public ResponseEntity<GalleryDto> getGallery(
+      @RequestParam(required = false) final String user,
       @RequestParam(required = false) final String gallery) {
     // FIXME proceed with passing the user and the gallery into the service
     System.out.println("user: " + user + ", gallery: " + gallery);

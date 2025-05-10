@@ -56,5 +56,28 @@ export function useGalleryService() {
     }
   }
 
-  return { images, healthCode, loadGallery }
+  async function uploadPicture(file: File, position: number) {
+    const apiBaseUrl = import.meta.env.DEV ? API_BASE_URL.development : API_BASE_URL.production
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('position', position.toString())
+    const headers: Record<string, string> = {}
+    // TODO refactoring: we should obviously not do anything if the user is not authenticated
+    if (isAuthenticated.value) {
+      const token = await getAccessTokenSilently()
+      headers['Authorization'] = `Bearer ${token}`
+    }
+    const response = await fetch(`${apiBaseUrl}/upload`, {
+      method: 'POST',
+      body: formData,
+      headers,
+      credentials: 'include', // TODO: check if this is needed
+    })
+    if (!response.ok) {
+      throw new Error('Upload failed')
+    }
+    return await response.json()
+  }
+
+  return { images, healthCode, loadGallery, uploadPicture }
 }
