@@ -13,6 +13,9 @@ import io.minio.MinioClient;
 import io.minio.RemoveObjectArgs;
 import io.minio.UploadObjectArgs;
 
+import io.sentry.Sentry;
+import io.sentry.SentryLevel;
+
 @Service
 public class FileStorageService {
 
@@ -53,18 +56,18 @@ public class FileStorageService {
             .filename(tempFile.getAbsolutePath())
             .build());
       } catch (final Exception e) {
-        System.err.println("Error occurred: " + e);
+        Sentry.captureException(e);
         return Optional.empty();
       }
 
       // TODO refactoring: move this to a finally {} section
       if (!tempFile.delete()) {
-        System.err.println("Could not delete " + tempFile);
+        Sentry.captureMessage("Could not delete temporary file " + tempFile, SentryLevel.ERROR);
       }
 
       return Optional.of(objectAccessUrlRoot + "/" + objectKey);
     } catch (final IOException e) {
-      System.err.println("I/O error occurred: " + e);
+      Sentry.captureException(e);
     }
 
     return Optional.empty();
@@ -81,7 +84,7 @@ public class FileStorageService {
           .object(objectKeyFromUrl)
           .build());
     } catch (final Exception e) {
-      System.err.println("Error while deleting " + url + ": " + e);
+      Sentry.captureException(e);
     }
   }
 

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import cz.vektor330.twentyfive.backend.model.GalleryDto;
 import cz.vektor330.twentyfive.backend.service.GalleryService;
 
+import io.sentry.Sentry;
+
 @RestController
 public class GalleryController {
 
@@ -24,7 +26,8 @@ public class GalleryController {
       @RequestParam(required = false) final String user,
       @RequestParam(required = false) final String gallery) {
     // FIXME proceed with passing the user and the gallery into the service
-    System.out.println("user: " + user + ", gallery: " + gallery);
+    Sentry.captureMessage("User: " + user + ", gallery: " + gallery);
+
     return ResponseEntity.ok(galleryService.get());
   }
 

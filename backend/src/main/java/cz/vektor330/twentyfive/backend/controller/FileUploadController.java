@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.sentry.Sentry;
+
 @RestController
 public class FileUploadController {
 
@@ -43,8 +45,8 @@ public class FileUploadController {
     }
     
     try {
-      // TODO refactoring: proper logging system
-      System.out.println("uploading to gallery to position " + position);
+      Sentry.captureMessage("Uploading file to gallery position " + position);
+
       // Store the file and get the URL
       final String fileUrl = fileStorageService.storeFileToS3(file).orElseThrow();
       
@@ -65,6 +67,7 @@ public class FileUploadController {
       
       return ResponseEntity.ok(response);
     } catch (final Exception e) {
+      Sentry.captureException(e);
       return ResponseEntity
           .status(HttpStatus.INTERNAL_SERVER_ERROR)
           .body("Failed to upload file: " + e.getMessage());

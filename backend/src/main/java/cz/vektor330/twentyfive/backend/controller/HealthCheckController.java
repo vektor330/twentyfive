@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cz.vektor330.twentyfive.backend.service.GalleryService;
 
+import io.sentry.Sentry;
+
 @RestController
 public class HealthCheckController {
 
@@ -22,6 +24,7 @@ public class HealthCheckController {
       galleryService.get();
       return ResponseEntity.ok("All OK!");
     } catch (final Exception e) {
+      Sentry.captureException(e);
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error, check logs");
     }
   }
