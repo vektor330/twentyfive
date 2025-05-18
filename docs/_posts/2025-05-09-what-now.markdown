@@ -2,7 +2,7 @@
 layout: posts
 title:  What Now?
 date:   2025-05-09
-categories: TODO
+categories: backend frontend buildsystem meta
 ---
 
 The time, energy and motivation I can muster for the project in the past weeks is dwindling, which is probably obvious also from the gap since the last blog post.
